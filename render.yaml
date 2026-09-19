@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: telegram-web-security-audit-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DEV_NAME
+        sync: false
+      - key: AUTHORIZED_USERS
+        sync: false
+      - key: MAX_CONCURRENT
+        value: "2"
+      - key: PORT_TIMEOUT
+        value: "1.5"
+      - key: PORT_WORKERS
+        value: "20"
+      - key: PORTS
+        value: "20,21,22,23,25,53,80,110,111,135,139,143,443,445,465,587,993,995,1433,1521,2049,2375,3000,3306,3389,5000,5432,5601,5900,6379,6443,8000,8080,8081,8088,8443,8888,9200,27017"
